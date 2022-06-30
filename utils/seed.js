@@ -1,5 +1,5 @@
 const connection = require("../config/connection");
-const { Post, Tags } = require("../models");
+const { User, Thought } = require("../models");
 // Import functions for seed data
 const { getRandomColor, getRandomPost, genRandomIndex } = require("./data");
 
@@ -9,15 +9,15 @@ console.time("seeding");
 // Creates a connection to mongodb
 connection.once("open", async () => {
   // Delete the entries in the collection
-  await Post.deleteMany({});
-  await Tags.deleteMany({});
+  await User.deleteMany({});
+  await Thought.deleteMany({});
 
   // Empty arrays for randomly generated posts and tags
-  const tags = [];
-  const posts = [];
+  const users = [];
+  const thoughts = [];
 
   // Function to make a post object and push it into the posts array
-  const makePost = (text) => {
+  const makeUser = (text) => {
     posts.push({
       published: Math.random() < 0.5,
       text,
@@ -27,26 +27,26 @@ connection.once("open", async () => {
 
   // Create 20 random tags and push them into the tags array
   for (let i = 0; i < 20; i++) {
-    const tagname = getRandomColor();
+    const thoughtname = getRandomColor();
 
-    tags.push({
+    thoughts.push({
       tagname,
-      color: tagname,
+      color: thoughtname,
     });
   }
 
   // Wait for the tags to be inserted into the database
-  await Tags.collection.insertMany(tags);
+  await Thoughts.collection.insertMany(thoughts);
 
   // For each of the tags that exist, make a random post of length 50
-  tags.forEach(() => makePost(getRandomPost(50)));
+  thoughts.forEach(() => makePost(getRandomPost(50)));
 
   // Wait for the posts array to be inserted into the database
-  await Post.collection.insertMany(posts);
+  await User.collection.insertMany(users);
 
   // Log out a pretty table for tags and posts, excluding the excessively long text property
-  console.table(tags);
-  console.table(posts, ["published", "tags", "_id"]);
+  console.table(thoughts);
+  console.table(users, ["published", "tags", "_id"]);
   console.timeEnd("seeding");
   process.exit(0);
 });
