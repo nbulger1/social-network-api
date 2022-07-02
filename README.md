@@ -2,6 +2,10 @@
 
 ## Description
 
+MongoDB is a NoSQL database that can be used as a general purpose document database by storing data in objects. It is popular due to its flexibility with unstructured data and speed with large amounts of data. I was tasked to create a social network API where users can share their thoughts, react to friends' thoughts, and create a friend list.
+
+This application utilizes Express.js for routing, a MongoDB database, the Mongoose Object Document Model (ODM), and moment for timestamp formatting.
+
 ## Table of Contents
 
 - [User Story](#user-story)
@@ -9,7 +13,7 @@
 - [](#)
 - [](#)
 - [License](#license)
-- [Links](#links)
+- [Link](#link)
 
 ## User Story
 
@@ -35,4 +39,10 @@ THEN I am able to successfully create and delete reactions to thoughts and add a
 
 ## License
 
-## Links
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+This project is protected under the MIT License.
+
+## Link
+
+See the following for a walkthrough video:
