@@ -10,8 +10,9 @@ This application utilizes Express.js for routing, a MongoDB database, the Mongoo
 
 - [User Story](#user-story)
 - [Acceptance Criteria](#acceptance-criteria)
-- [](#)
-- [](#)
+- [Models](#models)
+- [Controllers and Routes](#controllers-and-routes)
+- [Seeds](#seeds)
 - [License](#license)
 - [Link](#link)
 
@@ -36,6 +37,120 @@ THEN I am able to successfully create, update, and delete users and thoughts in 
 WHEN I test API POST and DELETE routes in Insomnia
 THEN I am able to successfully create and delete reactions to thoughts and add and remove friends to a user’s friend list
 ```
+
+## Models
+
+The models were created using the following requirements:
+
+**User**:
+
+- `username`
+
+  - String, Unique, Required, Trimmed
+
+- `email`
+
+  - String, Required, Unique, Match a valid email address
+
+- `thoughts`
+
+  - Array of `_id` values referencing the `Thought` model
+
+- `friends`
+
+  - Array of `_id` values referencing the `User` model (self-reference)
+
+- `friendCount`
+  - **Virtual** that retrieves the length of the user's `friends` array
+
+---
+
+**Thought**:
+
+- `thoughtText`
+
+  - String, Required, Between 1 and 280 characters
+
+- `createdAt`
+
+  - Date, Default value = current timestamp, Formatted with moment
+
+- `username` (The user that created this thought)
+
+  - String, Required
+
+- `userId`
+
+  - Array of `_id` values referencing the `User` model
+
+- `reactions`
+
+  - Array of nested documents created with the `reactionSchema`
+
+- `reactionCount`
+  - **Virtual** that retrieves the length of the thought's `reaction` array
+
+---
+
+**Reaction** (SCHEMA ONLY nested in thoughts - no model)
+
+- `reactionId`
+
+  - ObjectId data type, Default value = new ObjectId
+
+- `reactionBody`
+
+  - String, Required, 280 character maximum
+
+- `username`
+
+  - String, Required
+
+- `createdAt`
+  - Date, Default value = current timestamp, Formatted with moment
+
+## Controllers and Routes
+
+The controllers/routes were created based on the various requirements of the API. There are several different routes depending on the user request. A total of 14 routes are tested in Insomnia in the walkthrough video. Below is an overview of each pathway and the associated expected actions:
+
+**api/users**
+
+- GET all users
+- CREATE new user
+
+**api/users/:userId**
+
+- GET single user by ID
+- UPDATE single user by ID
+- DELETE single user by ID (and associated thoughts)
+
+**api/users/:userId/friend/:friendId**
+
+- CREATE new friend by ID of user by ID
+- DELETE friend by ID of user by ID
+
+**api/thoughts**
+
+- GET all thoughts
+- CREATE new thought (tied to user who created it)
+
+**api/thoughts/:thoughtId**
+
+- GET single thought by ID
+- UPDATE single thought by ID
+- DELETE single thought by ID
+
+**api/thoughts/:thoughtId/reactions**
+
+- CREATE new reaction to thought by ID
+
+**api/thoughts/:thoughtId/reactions/:reactionId**
+
+- DELETE reaction by ID of thought by ID
+
+## Seeds
+
+There was no seed data provided for this task, thus we were instructed to seed the database using Insomnia after API creation. However, I wanted to attempt to make my own seed data within the utils folder. The initial data found in the database after `npm run seed` is not flawless, but can be retrieved with the given routes. I am able to further seed the database using the routes created with the API.
 
 ## License
 
