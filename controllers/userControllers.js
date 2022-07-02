@@ -33,10 +33,13 @@ module.exports = {
   // Delete a user api/users/:userId
   deleteUser(req, res) {
     User.findOneAndDelete({ _id: req.params.userId })
+      .then((thought) => {
+        return Thought.deleteMany({ userId: req.params.userId });
+      })
       .then((user) =>
         !user
           ? res.status(404).json({ message: "No user found with that ID" })
-          : res.json({ message: "User deleted!" })
+          : res.json({ message: "User and associated thoughts deleted!" })
       )
       .catch((err) => res.status(500).json(err));
   },
