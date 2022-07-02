@@ -115,38 +115,38 @@ The controllers/routes were created based on the various requirements of the API
 
 **api/users**
 
-- GET all users
-- CREATE new user
+- `GET` all users
+- `CREATE` new user
 
 **api/users/:userId**
 
-- GET single user by ID
-- UPDATE single user by ID
-- DELETE single user by ID (and associated thoughts)
+- `GET` single user by ID
+- `UPDATE` single user by ID
+- `DELETE` single user by ID (and associated thoughts)
 
 **api/users/:userId/friend/:friendId**
 
-- CREATE new friend by ID of user by ID
-- DELETE friend by ID of user by ID
+- `CREATE` new friend by ID of user by ID
+- `DELETE` friend by ID of user by ID
 
 **api/thoughts**
 
-- GET all thoughts
-- CREATE new thought (tied to user who created it)
+- `GET` all thoughts
+- `CREATE` new thought (tied to user who created it)
 
 **api/thoughts/:thoughtId**
 
-- GET single thought by ID
-- UPDATE single thought by ID
-- DELETE single thought by ID
+- `GET` single thought by ID
+- `UPDATE` single thought by ID
+- `DELETE` single thought by ID
 
 **api/thoughts/:thoughtId/reactions**
 
-- CREATE new reaction to thought by ID
+- `CREATE` new reaction to thought by ID
 
 **api/thoughts/:thoughtId/reactions/:reactionId**
 
-- DELETE reaction by ID of thought by ID
+- `DELETE` reaction by ID of thought by ID
 
 ## Seeds
 
