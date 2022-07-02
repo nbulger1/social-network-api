@@ -10,7 +10,7 @@ const userSchema = new Schema(
       trim: true,
     },
     email: {
-      type: Boolean,
+      type: String,
       required: true,
       unique: true,
       match: [
@@ -36,6 +36,7 @@ const userSchema = new Schema(
       virtuals: true,
     },
     id: false,
+    returnOriginal: false,
   }
 );
 

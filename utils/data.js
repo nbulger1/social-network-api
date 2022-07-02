@@ -1,118 +1,85 @@
-const names = [
-  "Aaran",
-  "Aaren",
-  "Aarez",
-  "Aarman",
-  "Aaron",
-  "Aaron-James",
-  "Aarron",
-  "Aaryan",
-  "Aaryn",
-  "Aayan",
-  "Aazaan",
-  "Abaan",
-  "Abbas",
-  "Abdallah",
-  "Abdalroof",
-  "Abdihakim",
-  "Abdirahman",
-  "Abdisalam",
-  "Abdul",
-  "Abdul-Aziz",
-  "Abdulbasir",
-  "Abdulkadir",
-  "Abdulkarem",
-  "Smith",
-  "Jones",
-  "Coollastname",
-  "enter_name_here",
-  "Ze",
-  "Zechariah",
-  "Zeek",
-  "Zeeshan",
-  "Zeid",
-  "Zein",
-  "Zen",
-  "Zendel",
-  "Zenith",
-  "Zennon",
-  "Zeph",
-  "Zerah",
-  "Zhen",
-  "Zhi",
-  "Zhong",
-  "Zhuo",
-  "Zi",
-  "Zidane",
-  "Zijie",
-  "Zinedine",
-  "Zion",
-  "Zishan",
-  "Ziya",
-  "Ziyaan",
-  "Zohaib",
-  "Zohair",
-  "Zoubaeir",
-  "Zubair",
-  "Zubayr",
-  "Zuriel",
-  "Xander",
-  "Jared",
-  "Courtney",
-  "Gillian",
-  "Clark",
-  "Jared",
-  "Grace",
-  "Kelsey",
-  "Tamar",
-  "Alex",
-  "Mark",
-  "Tamar",
-  "Farish",
-  "Sarah",
-  "Nathaniel",
-  "Parker",
+const usernames = [
+  "user1",
+  "user2",
+  "user3",
+  "user4",
+  "user5",
+  "user6",
+  "user7",
+  "user8",
+  "user9",
+  "user10",
 ];
 
-const appDescriptions = [
-  "Decision Tracker",
-  "Find My Phone",
-  "Learn Piano",
-  "Starbase Defender",
-  "Tower Defense",
-  "Monopoly Money Manager",
-  "Movie trailers",
-  "Hello world",
-  "Stupid Social Media App",
-  "Notes",
-  "Messages",
-  "Email",
-  "Compass",
-  "Firefox",
-  "Running app",
-  "Cooking app",
-  "Poker",
-  "Deliveries",
+const emails = [
+  "user1234@gmail.com",
+  "user1382@gmail.com",
+  "user1293@gmail.com",
+  "user7893@gmail.com",
+  "user1027@gmail.com",
+  "user2345@gmail.com",
+  "user1254@gmail.com",
+  "user0146@gmail.com",
+  "user2245@gmail.com",
+  "user1233@gmail.com",
+];
+
+const thoughts = [
+  "Trees are cool",
+  "I love Starfish",
+  "Airplanes are weird",
+  "Starcrossed lovers don't exist",
+  "Bubbles are the best",
+  "Balloon animals are creepy",
+  "Movies theaters should close",
+  "I am awesome",
+  "Koda is absolutely adorable",
+];
+
+const reactions = [
+  "Wow",
+  "Insane",
+  "Silly",
+  "Absurd",
+  "Happily",
+  "What in the world",
+  "Only if the stars align",
+  "Beautiful",
+  "Ugly",
 ];
 
 // Get a random item given an array
 const getRandomArrItem = (arr) => arr[Math.floor(Math.random() * arr.length)];
 
-// Gets a random full name
-const getRandomName = () =>
-  `${getRandomArrItem(names)} ${getRandomArrItem(names)}`;
-
-// Function to generate random assignments that we can add to student object.
-const getRandomAssignments = (int) => {
-  const results = [];
+const getRandomThought = (int) => {
+  const thoughtArray = [];
   for (let i = 0; i < int; i++) {
-    results.push({
-      assignmentName: getRandomArrItem(appDescriptions),
-      score: Math.floor(Math.random() * (99 - 70 + 1) + 70),
+    thoughtArray.push({
+      thoughtText: getRandomArrItem(thoughts),
+      username: getRandomArrItem(usernames),
+      reactions: [
+        {
+          reactionBody: getRandomArrItem(reactions),
+        },
+      ],
     });
   }
-  return results;
+  return thoughtArray;
+};
+
+const getRandomUsers = (int) => {
+  const userArray = [];
+  for (let i = 0; i < int; i++) {
+    userArray.push({
+      username: getRandomArrItem(usernames),
+      email: getRandomArrItem(emails),
+    });
+  }
+  return userArray;
 };
 
 // Export the functions for use in seed.js
-module.exports = { getRandomName, getRandomAssignments };
+module.exports = {
+  getRandomThought,
+  getRandomUsers,
+};
