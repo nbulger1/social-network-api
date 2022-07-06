@@ -1,4 +1,4 @@
-const { Schema, model } = require("mongoose");
+const { Schema, model, Types } = require("mongoose");
 const moment = require("moment");
 
 const reactionSchema = new Schema(
@@ -15,10 +15,6 @@ const reactionSchema = new Schema(
     username: {
       type: String,
       required: true,
-    },
-    userId: {
-      type: Schema.Types.ObjectId,
-      ref: "user",
     },
     createdAt: {
       type: Date,

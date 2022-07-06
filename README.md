@@ -150,7 +150,7 @@ The controllers/routes were created based on the various requirements of the API
 
 ## Seeds
 
-There was no seed data provided for this task, thus we were instructed to seed the database using Insomnia after API creation. However, I wanted to attempt to make my own seed data within the utils folder. The initial data found in the database after `npm run seed` is not flawless, but can be retrieved with the given routes. I am able to further seed the database using the routes created with the API.
+There was no seed data provided for this task, thus we were instructed to seed the database using Insomnia after API creation. I did attempt to make my own seed data within the `utils` folder. This portion is still a work in progress as a practice creating seed data, thus I seeded the data using Insomnia instead of running `npm run seed`.
 
 ## License
 

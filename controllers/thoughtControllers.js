@@ -84,9 +84,9 @@ module.exports = {
   },
   // delete reaction by id api/thoughts/:thoughtId/reactions/:reactionId
   deleteReaction(req, res) {
-    Thought.findOneAndDelete(
+    Thought.findOneAndUpdate(
       { _id: req.params.thoughtId },
-      { $pull: { reactions: req.params.reactionId } }
+      { $pull: { reactions: { reactionId: req.params.reactionId } } }
     )
       .populate({ path: "reactions", select: "-__v" })
       .select("-__v")
