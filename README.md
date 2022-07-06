@@ -161,3 +161,5 @@ This project is protected under the MIT License.
 ## Link
 
 See the following for a walkthrough video: https://youtu.be/HrssbXnGkY4
+
+![GIF demonstrating testing the Insomnia routes for a variety of requests](images/walkthrough_video.gif)
